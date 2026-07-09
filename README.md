@@ -178,10 +178,6 @@ El proyecto incorpora diversas buenas prácticas enfocadas en la accesibilidad:
 
 ---
 
-# 📸 Capturas
-
-> Agregar aquí capturas de pantalla de la Landing Page.
-
 Ejemplo:
 
 - Hero
