@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-gray-900 font-sans antialiased;
+    background-color: #f8f9fa;
+    background-image:
+      radial-gradient(ellipse at 10% 0%, rgba(164, 214, 94, 0.18) 0px, transparent 55%),
+      radial-gradient(ellipse at 90% 10%, rgba(255, 227, 41, 0.12) 0px, transparent 45%),
+      radial-gradient(ellipse at 50% 100%, rgba(164, 214, 94, 0.10) 0px, transparent 60%),
+      radial-gradient(ellipse at 80% 60%, rgba(191, 243, 119, 0.08) 0px, transparent 40%);
+    will-change: auto;
+  }
+
+  ::selection {
+    @apply bg-brand-400/40 text-brand-900;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-50;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-400/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-400/70;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/80 backdrop-blur-xl border border-gray-200;
+  }
+
+  .glass-card {
+    @apply rounded-2xl shadow-sm;
+    border: 1.5px solid transparent;
+    background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)) padding-box,
+                linear-gradient(135deg, #e5e7eb, #f3f4f6) border-box;
+  }
+
+  .glass-card-hover {
+    @apply rounded-2xl shadow-sm transition-all duration-500 hover:shadow-lg hover:shadow-brand-400/20;
+    border: 1.5px solid transparent;
+    background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)) padding-box,
+                linear-gradient(135deg, #1a4d08, #2e6b0a, #4d9e1a, #a4d65e, #c8e830, #f2d600, #a4d65e, #4d9e1a, #2e6b0a, #1a4d08) border-box;
+    background-size: 100% 100%, 300% 300%;
+    background-position: 0% 0%, 0% 50%;
+    animation: premium-border-anim 5s ease infinite;
+  }
+
+  .glass-card-hover:hover {
+    transform: translateY(-4px);
+  }
+
+  .premium-section-container {
+    @apply rounded-3xl shadow-[0_4px_40px_rgba(67,105,0,0.06)];
+    border: 1.5px solid transparent;
+    background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)) padding-box,
+                linear-gradient(135deg, #1a4d08, #2e6b0a, #4d9e1a, #a4d65e, #c8e830, #f2d600, #a4d65e, #4d9e1a, #2e6b0a, #1a4d08) border-box;
+    background-size: 100% 100%, 300% 300%;
+    background-position: 0% 0%, 0% 50%;
+    animation: premium-border-anim 5s ease infinite;
+    backdrop-filter: blur(8px);
+  }
+
+  @keyframes premium-border-anim {
+    0% { background-position: 0% 0%, 0% 50%; }
+    50% { background-position: 0% 0%, 100% 50%; }
+    100% { background-position: 0% 0%, 0% 50%; }
+  }
+
+  .glow-brand {
+    box-shadow: 0 0 30px rgba(164, 214, 94, 0.4), 0 0 60px rgba(164, 214, 94, 0.15);
+  }
+
+  .glow-brand-sm {
+    box-shadow: 0 0 15px rgba(164, 214, 94, 0.25);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-500 via-brand-400 to-yellow-400;
+  }
+
+  .gradient-text-hero {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-900 via-brand-600 to-brand-400;
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold text-[#112000] bg-gradient-to-r from-[#a4d65e] to-[#ffe329] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-brand-400/30 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-primary::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-brand-500 to-brand-400 opacity-0 transition-opacity duration-300;
+  }
+
+  .btn-primary:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-primary span {
+    @apply relative z-10;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold text-brand-600 border border-brand-400/40 rounded-xl transition-all duration-300 hover:bg-brand-400/10 hover:border-brand-400/60 hover:text-brand-500 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .section-padding {
+    @apply px-4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: clamp(2rem, 4vh, 4rem);
+    padding-bottom: clamp(2rem, 4vh, 4rem);
+  }
+
+  .container-custom {
+    @apply mx-auto w-full;
+    max-width: min(1280px, calc(100vh * 16 / 9 - 4rem));
+  }
+
+  .ecg-line {
+    stroke-dasharray: 1000;
+    animation: ecg 2s linear infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Noise texture overlay */
+.noise-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.015;
+  z-index: 100;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Gradient mesh background */
+.mesh-gradient {
+  background:
+    radial-gradient(at 20% 20%, rgba(164, 214, 94, 0.12) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(253, 224, 25, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(67, 105, 0, 0.06) 0px, transparent 50%);
+  will-change: auto;
+}
+
+/* ECG animation keyframes */
+@keyframes ecg-draw {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Pulse ring animation */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* RadioactiveButton — flowing neon border */
+@keyframes flowRight {
+  0% { background-position: 0% 50%; }
+  100% { background-position: -200% 50%; }
+}
+
+.radioactive-glow {
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(164, 230, 55, 0.9),
+    inset 0 0 12px rgba(255, 255, 255, 0.5);
+}
